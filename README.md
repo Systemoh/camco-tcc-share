@@ -4,7 +4,7 @@ A static HTTPS page that receives a TCC notification and optional ASP code from 
 
 ## Deployment status
 
-Prepared on 6 November 2026, Riyadh time. Source is being staged in the dedicated private repository Systemoh/camco-tcc-share. Public deployment and authorization to expose the bundled CAMCO media are pending. The actual Power Apps URL must be configured after deployment.
+Prepared on 6 November 2026, Riyadh time. Published with explicit user approval for public source and all 60 ASP GIFs: https://systemoh.github.io/camco-tcc-share/ . Source revision d9c4235 deployed successfully. The handoff formula now contains the published URL.
 
 ## Hosting and confidentiality
 
@@ -40,7 +40,7 @@ Scope: static page, Power Fx handoff formula and bundled media. No native APK or
 
 Completed checks: loading a synthetic notification and L2-14 in a browser, animation display, unsupported-browser fallback and rejection of invalid ASP paths. Automated JavaScript tests verified exact Unicode text and file payloads, text-only sharing, clipboard handling, file-share fallback, cancellation, GIF load failure, invalid ASP/path input and the 12,000-character message limit. All 60 files are included. No credentials, Microsoft connection tokens or staff-list exports are bundled.
 
-Live Android-to-WhatsApp delivery, hosted HTTPS headers, CAMCO access controls, public media authorization and the final Power Apps launch are pending. The formula requires the final deployed URL and must be tested in Power Apps Studio and on the target phone. Retain the existing app formula as a rollback before publishing the change.
+HTTPS is enforced in GitHub Pages. Source review and automated checks passed; no confirmed high-severity issue was identified. Public media publication was explicitly approved. Live Android-to-WhatsApp delivery, account MFA, host-level security headers and the final Power Apps launch remain unverified. The formula must be tested in Power Apps Studio and on the target phone. Retain the existing app formula as a rollback before publishing the change.
 
 Primary documentation:
 - https://developer.mozilla.org/en-US/docs/Web/API/Navigator/share

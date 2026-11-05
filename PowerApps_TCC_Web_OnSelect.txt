@@ -1,5 +1,5 @@
 // Replace Image15_3.OnSelect on the TCC Notification screen.
-// Set sharePage below to the actual published HTTPS page URL before publishing.
+// Published GitHub Pages URL configured. Save and publish after pasting.
 
 If(
     !chkTCCDateTime.Value,
@@ -16,7 +16,7 @@ If(
     ),
     With(
         {
-            sharePage: "PASTE_PUBLISHED_HTTPS_PAGE_URL_HERE",
+            sharePage: "https://systemoh.github.io/camco-tcc-share/",
             effectiveType: If(
                 cmbIncidentType_1.Selected.Value = "Update",
                 varLastDisruptionType,
