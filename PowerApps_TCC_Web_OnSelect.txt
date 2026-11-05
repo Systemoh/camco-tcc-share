@@ -1,0 +1,55 @@
+// Replace Image15_3.OnSelect on the TCC Notification screen.
+// Set sharePage below to the actual published HTTPS page URL before publishing.
+
+If(
+    !chkTCCDateTime.Value,
+    Notify(
+        "Please confirm the Date & Time before sharing.",
+        NotificationType.Warning,
+        4000
+    ),
+    IsBlank(Trim(txtIncidentMessage_1.Text)),
+    Notify(
+        "Please prepare the TCC notification before sharing.",
+        NotificationType.Warning,
+        4000
+    ),
+    With(
+        {
+            sharePage: "PASTE_PUBLISHED_HTTPS_PAGE_URL_HERE",
+            effectiveType: If(
+                cmbIncidentType_1.Selected.Value = "Update",
+                varLastDisruptionType,
+                cmbIncidentType_1.Selected.Value
+            ),
+            selectedASP: Trim(Coalesce(cmbASP_1.SelectedText.Value, ""))
+        },
+        If(
+            !StartsWith(sharePage, "https://"),
+            Notify(
+                "The TCC sharing page URL must be configured before use.",
+                NotificationType.Error,
+                4000
+            ),
+            Launch(
+                sharePage &
+                "#text=" & EncodeUrl(txtIncidentMessage_1.Text) &
+                "&asp=" &
+                EncodeUrl(
+                    If(
+                        effectiveType = "Partial Service Disruption" &&
+                        IsMatch(
+                            selectedASP,
+                            "L1-(0[1-9]|[1-3][0-9]|4[0-6])|L2-(0[1-9]|1[0-4])",
+                            MatchOptions.Complete
+                        ),
+                        selectedASP,
+                        ""
+                    )
+                ),
+                {},
+                LaunchTarget.New
+            )
+        )
+    )
+)
